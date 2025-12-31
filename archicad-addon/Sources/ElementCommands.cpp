@@ -1464,7 +1464,7 @@ GS::Optional<GS::UniString> GetCollisionsCommand::GetInputParametersSchema () co
                 "properties": {
                     "volumeTolerance": {
                         "type": "number",
-                        "description": "Intersection body volume greater then this value will be considered as a collision. Default value is 0.001."
+                        "description": "Intersection body volume greater than this value will be considered as a collision. Default value is 0.001."
                     },
                     "performSurfaceCheck": {
                         "type": "boolean",
@@ -1472,7 +1472,7 @@ GS::Optional<GS::UniString> GetCollisionsCommand::GetInputParametersSchema () co
                     },
                     "surfaceTolerance": {
                         "type": "number",
-                        "description": "Intersection body surface area greater then this value will be considered as a collision. Default value is 0.001."
+                        "description": "Intersection body surface area greater than this value will be considered as a collision. Default value is 0.001."
                     }
                 },
                 "additionalProperties": false,

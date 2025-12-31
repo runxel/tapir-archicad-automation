@@ -30,7 +30,7 @@ namespace TapirGrasshopperPlugin.Components.ElementsComponents
 
             InNumber(
                 "VolumeTolerance",
-                "Intersection body volume greater then this value will be considered as a collision.",
+                "Intersection body volume greater than this value will be considered as a collision.",
                 Tolerances.Main);
 
             InBoolean(
@@ -40,7 +40,7 @@ namespace TapirGrasshopperPlugin.Components.ElementsComponents
 
             InNumber(
                 "SurfaceTolerance",
-                "Intersection body surface area greater then this value will be considered as a collision.",
+                "Intersection body surface area greater than this value will be considered as a collision.",
                 Tolerances.Main);
 
             SetOptionality(
