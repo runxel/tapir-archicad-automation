@@ -212,6 +212,43 @@ GS::ObjectState GetDatabaseIdFromNavigatorItemIdCommand::Execute (const GS::Obje
     return response;
 }
 
+GetCurrentDatabaseIdCommand::GetCurrentDatabaseIdCommand () :
+    CommandBase (CommonSchema::Used)
+{}
+
+GS::String GetCurrentDatabaseIdCommand::GetName () const
+{
+    return "GetCurrentDatabaseId";
+}
+
+GS::Optional<GS::UniString> GetCurrentDatabaseIdCommand::GetResponseSchema () const
+{
+    return R"({
+    "type": "object",
+    "properties": {
+        "databaseId": {
+            "$ref": "#/DatabaseId"
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "databaseId"
+    ]
+})";
+}
+
+GS::ObjectState GetCurrentDatabaseIdCommand::Execute (const GS::ObjectState& /*parameters*/, GS::ProcessControl& /*processControl*/) const
+{
+    API_DatabaseInfo dbInfo = {};
+    GSErrCode err = ACAPI_Database_GetCurrentDatabase (&dbInfo);
+    if (err != NoError) {
+        return CreateErrorResponse (err, "Failed to get the current database.");
+    }
+
+    const API_Guid databaseGuid = DatabaseIdResolver::Instance ().GetIdOfDatabase (dbInfo);
+    return CreateDatabaseIdObjectState (databaseGuid);
+}
+
 GetModelViewOptionsCommand::GetModelViewOptionsCommand () :
     CommandBase (CommonSchema::Used)
 {}

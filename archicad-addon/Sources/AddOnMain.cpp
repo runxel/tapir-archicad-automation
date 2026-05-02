@@ -488,6 +488,10 @@ GSErrCode Initialize (void)
             navigatorCommands, "1.1.4",
             "Gets the ID of the database associated with the supplied navigator item id"
         );
+        err |= RegisterCommand<GetCurrentDatabaseIdCommand> (
+            navigatorCommands, "1.3.2",
+            "Gets the ID of the currently active database."
+        );
         err |= RegisterCommand<GetModelViewOptionsCommand> (
             navigatorCommands, "1.1.4",
             "Gets all model view options"
